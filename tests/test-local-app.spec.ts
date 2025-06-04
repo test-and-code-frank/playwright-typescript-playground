@@ -2,7 +2,11 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { ItemListPage } from '../pages/ItemListPage';
+import { loadEnv } from '../src/loadEnv';
 
+const env = loadEnv();
+
+/* Paramaterize test */
 const invalidCredentials = [
   { username: 'testuser', password: 'invalid_password' },
   { username: 'invalid_username', password: 'password123' },
@@ -31,7 +35,7 @@ test('add, edit, delete item flow', async ({ page }) => {
   await loginPage.goto();
 
   // Login
-  await loginPage.login('testuser', 'password123');
+  await loginPage.login(env.username, env.password);
 
   // Verify dashboard loaded
   await dashboard.expectPageLoaded();
