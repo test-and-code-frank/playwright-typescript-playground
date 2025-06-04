@@ -1,0 +1,32 @@
+{
+  "name": "playwright-typescript-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/test-and-code-frank/playwright-typescript-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/test-and-code-frank/playwright-typescript-playground/issues"
+  },
+  "homepage": "https://github.com/test-and-code-frank/playwright-typescript-playground#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.15.29",
+    "playwright": "^1.52.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "js-yaml": "^4.1.0"
+  }
+}
