@@ -1,14 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { format } from 'date-fns';
-
+import { getFormTestData } from '../src/utils/loadExcelData';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { FormPage } from '../pages/FormPage';
+import { format } from 'date-fns';
 import { loadYAMLEnv } from '../src/utils/loadYAMLEnv';
-import { getFormTestData } from '../src/util/loadExcelData';
 
+// Synchronously load test data before test definition
 const env = loadYAMLEnv();
+const formTests = await getFormTestData();
 
+// Create one test per row
 test.describe('Form Submission - Excel Data Driven', () => {
   for (const [index, form_test] of formTests.entries()) {
     test(`should submit form successfully with input #${index + 1} (${form_test.text_input})`, async ({ page }) => {
