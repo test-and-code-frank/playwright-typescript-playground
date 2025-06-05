@@ -1,7 +1,38 @@
-
-# Playwright
+# Node.js
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+dist/
+out/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Playwright test results and outputs
+test-results/
+playwright-report/
+*.zip
+
+# VS Code settings (optional)
+.vscode/
+
+# Env or config
+.env
+.env.local
+.env.*.local
+
+# Ignore local YAML config if you don’t want to commit it
+# Uncomment the line below if you want to keep your config private
+# config/settings.yaml
+
+# Coverage reports
+coverage/
+
+# TypeScript cache
+*.tsbuildinfo
