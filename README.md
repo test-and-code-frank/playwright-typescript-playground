@@ -2,36 +2,60 @@
 
 A personal playground for exploring and experimenting with Playwright using TypeScript. This project serves two main purposes:
 
-🚀 To play around with Playwright features and best practices.
+- To play around with Playwright features and best practices.
 
-🧠 To showcase my understanding and practical knowledge of writing scalable and maintainable test automation using Playwright and TypeScript.
+- To showcase my understanding and practical knowledge of writing scalable and maintainable test automation using Playwright and TypeScript.
 
 
 ---
 
-## 🚀 Features
+## 💡 Experiment Highlights
 
-- 🧪 **Data-Driven Testing**
-  - The framework supports parameterized testing
-
-
-- 📌 **Assertions**
-  - Validates test outcomes with clear and informative assertion messages.
-
-
-- 📸 **Screenshot on Failure**
-  - Capture screenshots automatically when a test fails (useful for debugging UI failures).
-
-
-- 📄 **Page Object Model (POM)**
-  - Encapsulates page-specific actions and locators in dedicated classes for maintainability.
+- ### Page Object Model (POM)
+  Using the Page Object Model pattern to encapsulate UI interactions and selectors for maintainability and readability.
   
+  ✅ Each page/component has its own class in the /pages/ directory
+  
+  ✅ Constructor receives the `Page` object
+  
+  ✅ Methods expose common actions and assertions
+  
+- ### Data-Driven Testing
+  Exploring different approaches to run the same test logic against multiple sets of input data.
 
-- 📊 **Test Reporting**
+  ✅ Using Arrays + test.describe()
+  
+  ✅ Using CSV files as data sources. Used fs and csv-parse to read and parse test data
+  
+  🚧 Using Excel files as data sources
+  
+  > Attempted with exceljs, Issue: its async API didn’t play well with Playwright’s test declaration flow
+  > Only one test would execute instead of iterating through all rows.
+  > xlsx also has vulnerabilities.
 
-- ⚙️ Configuration with YAML
-  - This framework supports externalizing environment-specific variables using a YAML configuration file
-  - Easier configuration for headless mode through `webdriver_visible: False` in the YAML
+- ### Assertions with Playwright
+  Using Playwright Test Assertions to validate UI and behavior:
+
+  ✅`expect(actualMessage).toBe(expectedMessage);` – Validating strings 
+  
+  ✅`expect(items.length).toBe(0)` – Validating item length
+  
+  ☐ `expect(locator).` - Validating locator properties.
+
+- ### Screenshot on Failure
+  Playwright automatically captures screenshots when a test fails (when configured). This helps with debugging visual or timing issues.
+  
+  ✅ Enabled via Playwright config: `screenshot: 'only-on-failure'`
+
+- ### Test Reporting
+  Experimenting with different reporting tools and formats to track test results effectively.
+
+  ✅ Built-in HTML Reporter (Playwright)
+
+- ### Configuration with YAML
+  Experimenting with managing test data and dynamic config using .yaml files.
+  
+  ✅ Use Cases - Environment-specific settings (e.g., base URLs, credentials)
 
 ---
 
@@ -79,7 +103,6 @@ npx playwright test tests/example.spec.ts
 ---
 
 ## 🎯Project Goals
-Apply the Page Object Model for reusable and clean test architecture.
 
 Explore Playwright features like fixtures, context isolation, and tracing.
 
