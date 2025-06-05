@@ -36,6 +36,9 @@ export class FormPage {
   }
 
   async getFormMessage(): Promise<string> {
-    return await this.page.locator('#form-message').textContent() ?? '';
+    const rawText = await this.page.locator('#form-message').textContent() ?? '';
+    return rawText
+    .replace(/\s+/g, ' ')  // collapse all whitespace to single spaces
+    .trim();
   }
 }

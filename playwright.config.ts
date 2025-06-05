@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
-import { loadEnv } from './src/loadEnv';
+import { loadYAMLEnv } from './src/utils/loadYAMLEnv';
 
-const env = loadEnv();
+const env = loadYAMLEnv();
 
 export default defineConfig({
   testDir: './tests',

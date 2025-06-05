@@ -13,7 +13,7 @@ interface EnvConfig {
   };
 }
 
-export function loadEnv(): EnvSettings {
+export function loadYAMLEnv(): EnvSettings {
   const file = fs.readFileSync('./config/local.yaml', 'utf8'); // Make sure this path is correct
   const config = yaml.load(file) as EnvConfig;
   return config.settings.env;
