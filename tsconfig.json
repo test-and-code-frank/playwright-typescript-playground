@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "commonjs",
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "strict": true,
+    "resolveJsonModule": true,
     "outDir": "dist",
     "rootDir": ".",
-    "types": ["node", "playwright"],
+    "types": ["playwright"],
     "skipLibCheck": true
   },
   "include": [

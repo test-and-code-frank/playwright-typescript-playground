@@ -1,35 +1,28 @@
 import ExcelJS from 'exceljs';
 
-/**
- * Reads data from an Excel sheet and returns it as an array of objects.
- * @param filePath - Path to the .xlsx file
- * @param sheetName - Sheet name to read
- * @returns Promise resolving to array of row objects
- */
-export async function readExcelFile(filePath: string, sheetName: string): Promise<any[]> {
+export async function readExcelFile(workbookPath: string, sheetName: string): Promise<any[]> {
   const workbook = new ExcelJS.Workbook();
-  await workbook.xlsx.readFile(filePath);
+  await workbook.xlsx.readFile(workbookPath);
+  const worksheet = workbook.getWorksheet(sheetName);
 
-  const sheet = workbook.getWorksheet(sheetName);
-  if (!sheet) {
-    throw new Error(`Sheet "${sheetName}" not found in ${filePath}`);
+  if (!worksheet) {
+    throw new Error(`Sheet "${sheetName}" not found in workbook "${workbookPath}"`);
   }
 
-  const headers: string[] = [];
-  const data: any[] = [];
+  const rows: any[] = [];
+  const headers = worksheet.getRow(1).values as string[];
 
-  sheet.eachRow((row, rowNumber) => {
-    if (rowNumber === 1) {
-      // First row is header
-      row.eachCell(cell => headers.push(String(cell.value)));
-    } else {
-      const rowData: any = {};
-      row.eachCell((cell, colNumber) => {
-        rowData[headers[colNumber - 1]] = cell.value;
-      });
-      data.push(rowData);
-    }
+  worksheet.eachRow((row, rowNumber) => {
+    if (rowNumber === 1) return; // skip header
+    const data: any = {};
+    row.eachCell((cell, colNumber) => {
+      const key = headers[colNumber];
+      if (key) {
+        data[key] = cell.value;
+      }
+    });
+    rows.push(data);
   });
 
-  return data;
+  return rows;
 }
