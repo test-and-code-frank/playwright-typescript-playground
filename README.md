@@ -86,5 +86,3 @@ Explore Playwright features like fixtures, context isolation, and tracing.
 Demonstrate best practices in automation testing with TypeScript.
 
 Use this as a portfolio project for future opportunities and growth.
-
-branch protection check
