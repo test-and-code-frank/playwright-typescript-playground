@@ -104,8 +104,14 @@ npx playwright test tests/example.spec.ts
 
 ## 🎯Project Goals
 
-Explore Playwright features like fixtures, context isolation, and tracing.
+Visual Comparisons
+
+Retries
+
+API Testing
 
 Demonstrate best practices in automation testing with TypeScript.
+
+Explore Playwright features like fixtures, context isolation, and tracing.
 
 Use this as a portfolio project for future opportunities and growth.
