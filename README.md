@@ -12,9 +12,7 @@ A personal playground for exploring and experimenting with Playwright using Type
 ## 🚀 Features
 
 - 🧪 **Data-Driven Testing**
-  - The framework supports parameterized testing using:
-    - pytest.mark.parametrize (manual inline data)
-    - Excel files as an external data source (e.g., for login credentials, test inputs, etc.)
+  - The framework supports parameterized testing
 
 
 - 📌 **Assertions**
