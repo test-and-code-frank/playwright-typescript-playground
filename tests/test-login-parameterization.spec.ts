@@ -22,6 +22,7 @@ test.describe('Login Tests', () => {
       await loginPage.goto();
       await loginPage.login(creds.username, creds.password);
       await loginPage.isInvalidLoginMessageVisible();
+      await expect(page).toHaveScreenshot(`${creds.username} invalid login message.png`);
     });
   }
 });

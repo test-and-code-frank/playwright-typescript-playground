@@ -21,6 +21,7 @@ export class LoginPage {
     // Targets a <p> element with class error and specific visible text "Invalid credentials".
     // The hasText option adds an additional filter to make the selector more precise.
     this.errorMessage = page.locator('p.error', { hasText: 'Invalid credentials.' });
+
   }
 
   /*

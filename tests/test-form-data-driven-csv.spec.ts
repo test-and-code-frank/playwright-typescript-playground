@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import { parse } from 'csv-parse/sync';
 
-import { getFormTestData } from '../src/utils/loadExcelData';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { FormPage } from '../pages/FormPage';

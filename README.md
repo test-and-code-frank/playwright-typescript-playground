@@ -19,6 +19,17 @@ A personal playground for exploring and experimenting with Playwright using Type
   ✅ Constructor receives the `Page` object
   
   ✅ Methods expose common actions and assertions
+
+- ### Retries & Trace on Retry
+  Exploring how Playwright handles flaky tests through automatic retries and trace collection for debugging.
+
+  ✅ Retry Configuration Enable retries in `playwright.config.ts`
+  ```
+  trace: 'on-first-retry'
+  ```
+
+  ✅ `View trace` on the html report for the failed test
+
   
 - ### Data-Driven Testing
   Exploring different approaches to run the same test logic against multiple sets of input data.
@@ -56,6 +67,28 @@ A personal playground for exploring and experimenting with Playwright using Type
   Experimenting with managing test data and dynamic config using .yaml files.
   
   ✅ Use Cases - Environment-specific settings (e.g., base URLs, credentials)
+
+- ### Visual Comparisons
+  Experimenting with Playwright's screenshot comparison to catch unexpected UI changes.
+
+  ✅ Using expect(locator).toHaveScreenshot() to compare current UI state against a baseline image.
+  ```
+  await expect(page).toHaveScreenshot(`${creds.username} invalid login message.png`);
+  ```
+
+---
+
+## 🎯Project Goals
+
+Retries
+
+API Testing
+
+Demonstrate best practices in automation testing with TypeScript.
+
+Explore Playwright features like fixtures, context isolation, and tracing.
+
+Use this as a portfolio project for future opportunities and growth.
 
 ---
 
@@ -99,19 +132,3 @@ npx playwright test
 ```
 npx playwright test tests/example.spec.ts
 ```
-
----
-
-## 🎯Project Goals
-
-Visual Comparisons
-
-Retries
-
-API Testing
-
-Demonstrate best practices in automation testing with TypeScript.
-
-Explore Playwright features like fixtures, context isolation, and tracing.
-
-Use this as a portfolio project for future opportunities and growth.
