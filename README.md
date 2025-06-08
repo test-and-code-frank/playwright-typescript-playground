@@ -10,39 +10,39 @@ A personal playground for exploring and experimenting with Playwright using Type
 ## 💡 Experiment Highlights
 
 
-### Page Object Model (POM)
+### ✍🧩 Page Object Model (POM)
 
   Using the Page Object Model pattern to encapsulate UI interactions and selectors for maintainability and readability.
   
-  ✅ Each page/component has its own class in the /pages/ directory
+  - [x] Each page/component has its own class in the `/pages/` directory
   
-  ✅ Constructor receives the `Page` object
+  - [x] Constructor receives the `Page` object
   
-  ✅ Methods expose common actions and assertions
+  - [x] Methods expose common actions and assertions
 
   
-### Retries & Trace on Retry
+### ✍🧩 Retries & Trace on Retry
 
   Exploring how Playwright handles flaky tests through automatic retries and trace collection for debugging.
 
-  ✅ Retry Configuration Enable retries in `playwright.config.ts`
+  - [x] Retry Configuration Enable retries in `playwright.config.ts`
   ```
   trace: 'on-first-retry'
   ```
 
-  ✅ `View trace` on the html report for the failed test
+  - [x] `View trace` on the html report for the failed test
 
   💡 Tip
   > Useful config when running test on CI. 
   > After the test run, upload the results artifacts and view the trace report
 
 
-### Data-Driven Testing
+### ✍🧩 Data-Driven Testing
   Exploring different approaches to run the same test logic against multiple sets of input data.
 
-  ✅ Using Arrays + test.describe()
+  - [x] Using Arrays + test.describe()
   
-  ✅ Using CSV files as data sources. Used fs and csv-parse to read and parse test data
+  - [x] Using CSV files as data sources. Used fs and csv-parse to read and parse test data
   
   🚧 Using Excel files as data sources
   
@@ -51,38 +51,38 @@ A personal playground for exploring and experimenting with Playwright using Type
   > xlsx also has vulnerabilities.
 
 
-### Assertions with Playwright
+### ✍🧩 Assertions with Playwright
   Using Playwright Test Assertions to validate UI and behavior:
 
-  ✅`expect(actualMessage).toBe(expectedMessage);` – Validating strings 
+  - [x] `expect(actualMessage).toBe(expectedMessage);` – Validating strings 
   
-  ✅`expect(items.length).toBe(0)` – Validating item length
+  - [x] `expect(items.length).toBe(0)` – Validating item length
   
-  ☐ `expect(locator).` - Validating locator properties.
+  - [ ] `expect(locator).` - Validating locator properties.
 
 
-### Screenshot on Failure
+### ✍🧩 Screenshot on Failure
   Playwright automatically captures screenshots when a test fails (when configured). This helps with debugging visual or timing issues.
   
-  ✅ Enabled via Playwright config: `screenshot: 'only-on-failure'`
+  - [x] Enabled via Playwright config: `screenshot: 'only-on-failure'`
 
 
-### Test Reporting
+### ✍🧩 Test Reporting
   Experimenting with different reporting tools and formats to track test results effectively.
 
-  ✅ Built-in HTML Reporter (Playwright)
+  - [x] Built-in HTML Reporter (Playwright)
 
 
-### Configuration with YAML
+### ✍🧩 Configuration with YAML
   Experimenting with managing test data and dynamic config using .yaml files.
   
-  ✅ Use Cases - Environment-specific settings (e.g., base URLs, credentials)
+  - [x] Use Cases - Environment-specific settings (e.g., base URLs, credentials)
 
 
-### Visual Comparisons
+### ✍🧩 Visual Comparisons
   Experimenting with Playwright's screenshot comparison to catch unexpected UI changes.
 
-  ✅ Using expect(locator).toHaveScreenshot() to compare current UI state against a baseline image.
+  - [x] Using expect(locator).toHaveScreenshot() to compare current UI state against a baseline image.
   ```
   await expect(page).toHaveScreenshot(`${creds.username} invalid login message.png`);
   ```
