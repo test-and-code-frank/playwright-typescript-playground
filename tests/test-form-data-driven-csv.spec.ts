@@ -1,4 +1,8 @@
 import { test, expect } from '@playwright/test';
+import fs from 'fs';
+import path from 'path';
+import { parse } from 'csv-parse/sync';
+
 import { getFormTestData } from '../src/utils/loadExcelData';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
@@ -6,15 +10,14 @@ import { FormPage } from '../pages/FormPage';
 import { format } from 'date-fns';
 import { loadYAMLEnv } from '../src/utils/loadYAMLEnv';
 
-// Synchronously load test data before test definition
 const env = loadYAMLEnv();
-const formTests = await getFormTestData();
+const csvContent = fs.readFileSync(path.join(__dirname, '../test-data/form test.csv'));
+const formTests = parse(csvContent, { columns: true, skip_empty_lines: true });
 
-// Create one test per row
-test.describe('Form Submission - Excel Data Driven', () => {
-  for (const [index, form_test] of formTests.entries()) {
-    test(`should submit form successfully with input #${index + 1} (${form_test.text_input})`, async ({ page }) => {
-      const loginPage = new LoginPage(page);
+for (const form_test of formTests) {
+  test(`Form test: ${form_test.text_input}`, async ({ page }) => {
+
+     const loginPage = new LoginPage(page);
       const dashboard = new DashboardPage(page);
       const formPage = new FormPage(page);
 
@@ -39,6 +42,5 @@ test.describe('Form Submission - Excel Data Driven', () => {
 
       const actualMessage = await formPage.getFormMessage();
       expect(actualMessage).toBe(expectedMessage);
-    });
-  }
-});
+  });
+}

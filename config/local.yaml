@@ -3,4 +3,4 @@ settings:
     # Environments
     username: testuser
     password: password123
-    webdriver_visible: false
+    webdriver_visible: true
