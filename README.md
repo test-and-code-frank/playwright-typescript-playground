@@ -30,7 +30,10 @@ A personal playground for exploring and experimenting with Playwright using Type
 
   ✅ `View trace` on the html report for the failed test
 
-  
+  💡 Tips
+  > Useful config when running test on CI. 
+  > After the test run, upload the results artifacts and view the trace report
+
 - ### Data-Driven Testing
   Exploring different approaches to run the same test logic against multiple sets of input data.
 
@@ -79,8 +82,6 @@ A personal playground for exploring and experimenting with Playwright using Type
 ---
 
 ## 🎯Project Goals
-
-Retries
 
 API Testing
 
