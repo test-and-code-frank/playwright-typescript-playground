@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 import { LoginPage } from '../pages/LoginPage';
 
-/* Paramaterize test */
+/* Parameterize test */
 const invalidCredentials = [
   { username: 'testuser', password: 'invalid_password' },
   { username: 'invalid_username', password: 'password123' },
@@ -16,13 +16,13 @@ For items without describe it will just show as "Should show error for invalid l
 */
 
 test.describe('Login Tests', () => {
-  for (const creds of invalidCredentials) {
-    test(`should show error for invalid login with ${creds.username}`, async ({ page }) => {
+  for (const credentials of invalidCredentials) {
+    test(`should show error for invalid login with ${credentials.username}`, async ({ page }) => {
       const loginPage = new LoginPage(page);
       await loginPage.goto();
-      await loginPage.login(creds.username, creds.password);
+      await loginPage.login(credentials.username, credentials.password);
       await loginPage.isInvalidLoginMessageVisible();
-      await expect(page).toHaveScreenshot(`${creds.username} invalid login message.png`);
+      await expect(page).toHaveScreenshot(`${credentials.username} invalid login message.png`);
     });
   }
 });

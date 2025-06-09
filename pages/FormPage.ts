@@ -1,10 +1,12 @@
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class FormPage {
   readonly page: Page;
+  readonly form_dropdown: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.form_dropdown = page.locator('#dropdown');
   }
 
   async expectPageLoaded() {
@@ -16,7 +18,7 @@ export class FormPage {
   }
 
   async selectDropdown(option: string) {
-    await this.page.locator('#dropdown').selectOption({ value: option });
+    await this.form_dropdown.selectOption({ value: option });
   }
 
   async fillDate(date: string) {

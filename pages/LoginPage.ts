@@ -19,7 +19,7 @@ export class LoginPage {
     this.loginButton = page.locator('button[onclick="login()"]');
 
     // Targets a <p> element with class error and specific visible text "Invalid credentials".
-    // The hasText option adds an additional filter to make the selector more precise.
+    // The hasText option adds a filter to make the selector more precise.
     this.errorMessage = page.locator('p.error', { hasText: 'Invalid credentials.' });
 
   }
@@ -27,7 +27,7 @@ export class LoginPage {
   /*
   What is async?
   When you mark a function with async, you're telling JavaScript/TypeScript:
-  This function will do something that takes time (like loading a page, clicking a button, or waiting for a response), and it will return a Promise."
+  This function will do something that takes time (like loading a page, clicking a button, or waiting for a response), and it will return a Promise.
   */
 
   /*

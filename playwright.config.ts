@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { defineConfig, devices } from '@playwright/test';
 import { loadYAMLEnv } from './src/utils/loadYAMLEnv';
 
@@ -19,7 +21,7 @@ export default defineConfig({
   'retain-on-failure' - Record a trace for each test, but remove it from successful test runs.
   */
   use: {
-    trace: 'on-first-retry',
+    trace: 'on',
     screenshot: 'only-on-failure'
   },
 
