@@ -27,7 +27,8 @@ export class LoginPage {
   /*
   What is async?
   When you mark a function with async, you're telling JavaScript/TypeScript:
-  This function will do something that takes time (like loading a page, clicking a button, or waiting for a response), and it will return a Promise.
+  This function will do something that takes time (like loading a page, clicking a button, or waiting for a response),
+  and it will return a Promise.
   */
 
   /*

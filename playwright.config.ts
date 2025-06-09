@@ -21,7 +21,7 @@ export default defineConfig({
   'retain-on-failure' - Record a trace for each test, but remove it from successful test runs.
   */
   use: {
-    trace: 'on',
+    trace: 'on-first-retry',
     screenshot: 'only-on-failure'
   },
 

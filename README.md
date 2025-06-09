@@ -105,13 +105,15 @@ Use this as a portfolio project for future opportunities and growth.
 playwright-typescript-playground/
 ├── config/             # Configuration utilities
 ├── pages/              # Page Object Models (POMs)
-├── src/                # Optional utility or mock app logic
+├── src/utils           # Optional utility or mock app logic
+├── test-data           # test files e.g csv or json
 ├── test-site/          # Static site for controlled testing
 ├── tests/              # Playwright test cases
-├── playwright.config.ts
-├── tsconfig.json
+├── .gitignore
 ├── package.json
-└── .gitignore
+├── playwright.config.ts
+├── README.md
+└── tsconfig.json
 ```
 
 

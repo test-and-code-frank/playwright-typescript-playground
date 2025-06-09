@@ -8,6 +8,7 @@ export class ItemListPage {
   readonly saveButton: Locator;
   readonly backToDashboardButton: Locator;
   readonly itemListSection: Locator;
+  readonly items: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,6 +18,7 @@ export class ItemListPage {
     this.saveButton = page.locator('button', { hasText: 'Save' });
     this.backToDashboardButton = page.locator('#list-page button', { hasText: 'Back to Dashboard' });
     this.itemListSection = page.locator('#list-page');
+    this.items = page.locator('#item-list li span');
   }
 
   async expectPageLoaded() {
@@ -41,8 +43,7 @@ export class ItemListPage {
   }
 
   async getItems(): Promise<string[]> {
-    const items = this.page.locator('#item-list li span');
-    return await items.allTextContents();
+    return await this.items.allTextContents();
   }
 
   async goBackToDashboard() {

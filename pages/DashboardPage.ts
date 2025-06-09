@@ -22,7 +22,6 @@ export class DashboardPage {
   }
 
   async getHeaderText(): Promise<string> {
-  await this.header.waitFor({ state: 'visible' });
   const text = await this.header.textContent();
   return text ?? '';
   }

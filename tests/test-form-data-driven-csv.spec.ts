@@ -2,12 +2,15 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'csv-parse/sync';
+import { format } from 'date-fns';
 
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { FormPage } from '../pages/FormPage';
-import { format } from 'date-fns';
+
 import { loadYAMLEnv } from '../src/utils/loadYAMLEnv';
+import { normalize  } from '../src/utils/textUtils';
+
 
 const env = loadYAMLEnv();
 const csvContent = fs.readFileSync(path.join(__dirname, '../test-data/form test.csv'));
@@ -24,7 +27,13 @@ for (const form_test of formTests) {
       const formattedDate = format(date, 'yyyy-MM-dd');
       const displayDate = format(date, 'yyyy-MM-dd');
 
-      const expectedMessage = `Form submitted successfully! Text: ${form_test.text_input}, Option: ${form_test.selected_dropdown}, Date: ${displayDate}, Choice: ${form_test.select_radio}, Agreed: true`;
+      const expectedMessage = `Form submitted successfully! 
+      Text: ${form_test.text_input}, 
+      Option: ${form_test.selected_dropdown}, 
+      Date: ${displayDate},
+      Choice: ${form_test.select_radio}, 
+      Agreed: true`;
+
 
       await loginPage.goto();
       await loginPage.login(env.username, env.password);
@@ -37,9 +46,9 @@ for (const form_test of formTests) {
       await formPage.fillDate(formattedDate);
       await formPage.selectRadioOption(form_test.select_radio);
       await formPage.checkAgree();
-      await formPage.submit();
+      await formPage.clickSubmit();
 
       const actualMessage = await formPage.getFormMessage();
-      expect(actualMessage).toBe(expectedMessage);
+      expect(normalize(actualMessage)).toBe(normalize(expectedMessage));
   });
 }

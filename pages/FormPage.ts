@@ -2,27 +2,39 @@ import { Page, Locator } from '@playwright/test';
 
 export class FormPage {
   readonly page: Page;
-  readonly form_dropdown: Locator;
+  readonly formDropdown: Locator;
+  readonly pageLoad: Locator;
+  readonly textInput: Locator;
+  readonly date: Locator;
+  readonly agree: Locator;
+  readonly submit: Locator;
+  readonly formMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.form_dropdown = page.locator('#dropdown');
+    this.formDropdown = page.locator('#dropdown');
+    this.pageLoad = page.locator('#form-page');
+    this.textInput = page.locator('#form-input');
+    this.date = page.locator('#date');
+    this.agree = page.locator('#agree')
+    this.submit = page.locator('button', { hasText: 'Submit' });
+    this.formMessage = page.locator('#form-message');
   }
 
   async expectPageLoaded() {
-    await this.page.locator('#form-page').waitFor();
+    await this.pageLoad.waitFor();
   }
 
   async fillTextInput(text: string) {
-    await this.page.locator('#form-input').fill(text);
+    await this.textInput.fill(text);
   }
 
   async selectDropdown(option: string) {
-    await this.form_dropdown.selectOption({ value: option });
+    await this.formDropdown.selectOption({ value: option });
   }
 
   async fillDate(date: string) {
-    await this.page.locator('#date').fill(date);
+    await this.date.fill(date);
   }
 
   async selectRadioOption(value: string) {
@@ -30,17 +42,14 @@ export class FormPage {
   }
 
   async checkAgree() {
-    await this.page.locator('#agree').check();
+    await this.agree.check();
   }
 
-  async submit() {
-    await this.page.locator('button', { hasText: 'Submit' }).click();
+  async clickSubmit() {
+    await this.submit.click();
   }
 
   async getFormMessage(): Promise<string> {
-    const rawText = await this.page.locator('#form-message').textContent() ?? '';
-    return rawText
-    .replace(/\s+/g, ' ')  // collapse all whitespace to single spaces
-    .trim();
+    return await this.formMessage.textContent() ?? '';
   }
 }
