@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-export class FormPage {
+export class FormPom {
   readonly page: Page;
   readonly formDropdown: Locator;
   readonly pageLoad: Locator;

@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-export class DashboardPage {
+export class DashboardPom {
   readonly page: Page;
   readonly dashboardSection: Locator;
   readonly goToItemListButton: Locator;

@@ -3,7 +3,7 @@
 // Locator: A smart, retryable reference to a DOM element (used to interact with or assert UI elements).
 import { Page, Locator } from '@playwright/test';
 
-export class LoginPage {
+export class LoginPom {
 
   // Using readonly means you can't reassign these properties once they’re set.
   readonly page: Page;

@@ -1,18 +1,36 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { defineConfig, devices } from '@playwright/test';
-import { loadYAMLEnv } from './src/utils/loadYAMLEnv';
+import { loadYamlEnv } from './test-utils/config/load-yaml-env';
 
-const env = loadYAMLEnv();
+const env = loadYamlEnv();
 
 export default defineConfig({
   testDir: './tests',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
-  retries: 3,
+  retries: 1,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [
+    [
+      "json",
+      {
+        outputFile: "test-results.json",
+      },
+    ],
+    [
+      "html",
+      {
+        open: "never",
+        outputFolder: "playwright-report",
+        embedAssets: true,
+      },
+    ],
+  ],
   timeout: 10000,
+  expect: {
+    timeout: 5000, // 5s for expect() assertions
+  },
   /*
   'on-first-retry' - Record a trace only when retrying a test for the first time.
   'on-all-retries' - Record traces for all test retries.
@@ -30,7 +48,7 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        headless: !env.webdriver_visible,
+        headless: !env.webdriverVisible,
         channel: 'chrome', // explicitly use Google Chrome browser
       },
     },

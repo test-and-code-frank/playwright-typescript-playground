@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPom } from '../../pages/login.pom';
 
 /* Parameterize test */
 const invalidCredentials = [
@@ -18,7 +18,7 @@ For items without describe it will just show as "Should show error for invalid l
 test.describe('Login Tests', () => {
   for (const credentials of invalidCredentials) {
     test(`should show error for invalid login with ${credentials.username}`, async ({ page }) => {
-      const loginPage = new LoginPage(page);
+      const loginPage = new LoginPom(page);
       await loginPage.goto();
       await loginPage.login(credentials.username, credentials.password);
       await loginPage.isInvalidLoginMessageVisible();

@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-export class ItemListPage {
+export class ItemListPom {
   readonly page: Page;
   readonly itemInput: Locator;
   readonly addItemButton: Locator;

@@ -4,24 +4,24 @@ import path from 'path';
 import { parse } from 'csv-parse/sync';
 import { format } from 'date-fns';
 
-import { LoginPage } from '../pages/LoginPage';
-import { DashboardPage } from '../pages/DashboardPage';
-import { FormPage } from '../pages/FormPage';
+import { LoginPom } from '../../pages/login.pom';
+import { DashboardPom } from '../../pages/dashboard.pom';
+import { FormPom } from '../../pages/form.pom';
 
-import { loadYAMLEnv } from '../src/utils/loadYAMLEnv';
-import { normalize  } from '../src/utils/textUtils';
+import { loadYamlEnv } from '../../test-utils/config/load-yaml-env';
+import {normalize} from "../../test-utils/text-utils";
 
 
-const env = loadYAMLEnv();
-const csvContent = fs.readFileSync(path.join(__dirname, '../test-data/form test.csv'));
+const env = loadYamlEnv();
+const csvContent = fs.readFileSync(path.join(__dirname, '../../test-data/form test.csv'));
 const formTests = parse(csvContent, { columns: true, skip_empty_lines: true });
 
 for (const form_test of formTests) {
   test(`Form test: ${form_test.text_input}`, async ({ page }) => {
 
-     const loginPage = new LoginPage(page);
-      const dashboard = new DashboardPage(page);
-      const formPage = new FormPage(page);
+     const loginPage = new LoginPom(page);
+      const dashboard = new DashboardPom(page);
+      const formPage = new FormPom(page);
 
       const date = new Date(form_test.date);
       const formattedDate = format(date, 'yyyy-MM-dd');

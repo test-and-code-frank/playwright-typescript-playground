@@ -1,20 +1,20 @@
 import { test, expect } from '@playwright/test';
 
-import { LoginPage } from '../pages/LoginPage';
-import { DashboardPage } from '../pages/DashboardPage';
-import { ItemListPage } from '../pages/ItemListPage';
+import { LoginPom } from '../../pages/login.pom';
+import { DashboardPom } from '../../pages/dashboard.pom';
+import { ItemListPom } from '../../pages/item-list.pom';
 
-import { loadYAMLEnv } from '../src/utils/loadYAMLEnv';
+import { loadYamlEnv } from '../../test-utils/config/load-yaml-env';
 
-const env = loadYAMLEnv();
+const env = loadYamlEnv();
 
 test('add, edit, delete item flow', async ({ page }) => {
 
   // const is a keyword used to declare a variable whose value cannot be reassigned after it’s set.
 
-  const loginPage = new LoginPage(page);
-  const dashboard = new DashboardPage(page);
-  const itemList = new ItemListPage(page);
+  const loginPage = new LoginPom(page);
+  const dashboard = new DashboardPom(page);
+  const itemList = new ItemListPom(page);
 
   const itemName = 'test item';
   const updatedItemName = 'updated test item';
